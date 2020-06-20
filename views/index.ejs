@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="jumbotron text-center" id="intro">
+            <h1>Personalize your experience with Venuefy</h1>
+            <h2>Your Partner forever</h2>
+        </div>
+        <div class='card' id='card1'>
+            <div class="card-header">
+                <h2>
+                    Personalize
+                </h2>
+
+            </div>
+            <div class="card-body">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi iusto dolores tenetur explicabo totam, velit exercitationem, autem ea et molestiae, accusantium officia. Laudantium commodi pariatur, ab similique quaerat, dolore quod facilis accusamus sequi ipsum aliquid exercitationem porro praesentium at modi cupiditate temporibus est vitae. Perspiciatis repudiandae fugit dolore ad nemo.</p>
+            </div>
+        </div>
+        <div class='card' id='card2'>
+            <div class="card-header">
+                <h2>
+                    Technology
+                </h2>
+
+            </div>
+            <div class="card-body">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi iusto dolores tenetur explicabo totam, velit exercitationem, autem ea et molestiae, accusantium officia. Laudantium commodi pariatur, ab similique quaerat, dolore quod facilis accusamus sequi ipsum aliquid exercitationem porro praesentium at modi cupiditate temporibus est vitae. Perspiciatis repudiandae fugit dolore ad nemo.</p>
+            </div>
+        </div>
+        <div class='card' id='card3'>
+            <div class="card-header">
+                <h2>
+                    Elegance
+                </h2>
+
+            </div>
+            <div class="card-body">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi iusto dolores tenetur explicabo totam, velit exercitationem, autem ea et molestiae, accusantium officia. Laudantium commodi pariatur, ab similique quaerat, dolore quod facilis accusamus sequi ipsum aliquid exercitationem porro praesentium at modi cupiditate temporibus est vitae. Perspiciatis repudiandae fugit dolore ad nemo.</p>
+            </div>
+        </div>
+        <div class="jumbotron text-center" id="jumbo">
+            <h2>Click here for data-base operations</h2>
+        </div>
+        <div class="overlay" >
+            <ul style="padding-top:60%;color: white;font-size: xx-large;">
+                <li>
+                    <p><a href="insert" style="color: white;">insert</a></p>
+                </li>
+                <li>
+                    <p><a href="update" style="color: white;">update</a></p>
+                </li>
+                <li>
+                    <p><a href="delete" style="color: white;">delete</a></p>
+                </li>
+                <li>
+                    <p><a href="products" style="color: white;">ListAll</a></p>
+                </li>
+            </ul>
+        </div>
+        <script>
+           $(document).ready(function(){
+                $("#jumbo").click(function(){
+                    $(".overlay").toggleClass("active");
+                })
+            })
+        </script>
+        <style>
+            html{
+                scroll-behavior: smooth;
+            }
+            body{
+                display:grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr  ;
+                grid-column-gap:30px;
+            }
+            #intro{
+                grid-row-start: 1;
+                grid-row-end:2 ;
+                grid-column-start:1;
+                grid-column-end :4;
+            }
+            #card1{
+                grid-column-start:1;
+                grid-column-end:1;
+                grid-row-start: 2;
+                grid-row-end:3;
+            }
+            #card2{
+                grid-column-start:3;
+                grid-column-end:4;
+                grid-row-start: 2;
+                grid-row-end:3;
+            }
+            #card3{
+                grid-column-start:2;
+                grid-column-end:3;
+                grid-row-start: 2;
+                grid-row-end:3;
+            }
+            #jumbo{
+                grid-column-start:1;
+                grid-column-end:4;
+                grid-row-start:3;
+                grid-row-end:3;
+                margin-top:2%;
+            }
+            .overlay{
+                color: white;
+                transition:transform .4s;
+
+            }
+            .overlay.active{
+                z-index:1;
+                grid-row-start:1;
+                grid-row-end: 4;
+                grid-column-start:1;
+                grid-column-end:2;
+                background:rgba(0,0,0,0.9);
+                transition:transform .4s;
+            }
+        </style>
+    </body>
+</html>

@@ -18,14 +18,27 @@ mongoclient.connect('mongodb+srv://karthik:karthik@cluster0.m6yhb.mongodb.net/ct
     }
 });
 app.get("/",(req,res)=>{
-    res.sendFile(__dirname+"/index.html");
+    res.render('index');
+})
+app.get("/insert",(req,res)=>{
+    res.render('insert');
+});
+app.get("/update",(req,res)=>{
+    res.render('update');
+});
+app.get("/products",(req,res)=>{
+    res.redirect("/getall");
+});
+app.get("/delete",(req,res)=>{
+    res.render('delete');
 })
 app.post("/create",(req,res)=>{
     var name=req.body.name;
     var link=req.body.link;
     var description=req.body.description;
+    var id= Math.floor(Math.random() * (300 - 1) + 1);
     var data={
-        '_id':'001',
+        '_id':id,
         'name':name,
         'imagelink':link,
         'description':description
@@ -36,7 +49,7 @@ app.post("/create",(req,res)=>{
             throw err;
         }
         else{
-            res.send("Successfully pushed to the database");
+            res.render('index');
         }
     })
 });
@@ -46,7 +59,7 @@ app.post("/edit",(req,res)=>{
     var link_updated=req.body.updated_link;
     var description_updated=req.body.updated_description;
     var find={
-        _id:id,
+        _id:parseInt(id),
     };
     var value={
         name:name_updated,
@@ -60,10 +73,28 @@ app.post("/edit",(req,res)=>{
 
         }
         else{
-            res.send("successfully patched");
+            res.render('index');
         }
     });
 });
+app.get("/getall",(req,res)=>{
+    dbo.collection('products').find({},{projection:{_id:0}}).toArray(function(err,result){
+        if(err)
+        {
+            throw err;
+        }
+        else{
+            res.render('products',{data:JSON.stringify(result)});
+        }
+    })
+})
+app.post("/del",(req,res)=>{
+    var q=req.body.omit
+    console.log(q);
+    dbo.collection("products").find({_id:{$ne:parseInt(q)}}).toArray(function(err,result){
+        res.json(result);
+    })
+})
 app.listen(3000,(err)=>{
     if(err)
     {
